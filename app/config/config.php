@@ -1,6 +1,6 @@
 <?php
 
-define('BASEURL', 'http://localhost/project-1/public');
+define('BASEURL', 'http://localhost/OnlineShopActionFigure/public');
 
 // DB
 
