@@ -13,7 +13,7 @@ class Api
 
     public function __construct()
     {
-        $this->fire = new Google_client();
+        $this->fire = new Google_Client();
         $this->fire->setAuthConfigFile($this->authfile);
         $this->fire->setRedirectUri($this->url . '/login');
         $this->fire->setScopes($this->scope);

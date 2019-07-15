@@ -42,7 +42,7 @@ class Login extends Controller {
 
     public function api()
     {
-        $this->model('Api')->masuk;
+        $this->model('Api')->masuk();
     }
 
     public function out()
