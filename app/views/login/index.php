@@ -32,7 +32,7 @@
 							<div class="col-md-12 form-group">
 								<button type="submit" name="login" value="submit" class="primary-btn">Log In</button>
 								<a href="#">Forgot Password?</a>
-								<a href="<?= BASEURL?>/auth" class="text-primary">Login With Google</a>
+								<a href="<?= BASEURL?>/login/api" class="text-primary">Login With Google</a>
 							</div>
 						</form>
 					</div>

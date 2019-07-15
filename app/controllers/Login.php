@@ -40,6 +40,11 @@ class Login extends Controller {
         header('Location:'. BASEURL . '/login');
     }
 
+    public function api()
+    {
+        $this->model('Api')->masuk;
+    }
+
     public function out()
     {
         

@@ -9,4 +9,6 @@ define('DB_USER', 'root');
 define('DB_PASS', '');
 define('DB_NAME', 'shop');
 
+define('AUTH', '../app/config/client-api.json');
+
 ?>

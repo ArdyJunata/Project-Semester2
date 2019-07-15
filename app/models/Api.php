@@ -1,5 +1,4 @@
 <?php
-session_start();
 class Api
 {
     private $authfile = AUTH;
@@ -14,7 +13,7 @@ class Api
 
     public function __construct()
     {
-        $this->fire = new Google_Client();
+        $this->fire = new Google_client();
         $this->fire->setAuthConfigFile($this->authfile);
         $this->fire->setRedirectUri($this->url . '/login');
         $this->fire->setScopes($this->scope);
