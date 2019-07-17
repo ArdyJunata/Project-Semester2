@@ -1,6 +1,6 @@
 <?php
 
-class Cart_model {
+class Confirmation_model {
     private $table = 'shopingcart';
     private $db;
 
@@ -9,24 +9,13 @@ class Cart_model {
         $this->db = new Database;
     }
 
-    public function setCart($data)
-    {
-        $query = "INSERT INTO shopingcart values ('', 1, :total, :id, :userID)";
-        $this->db->query($query);
-        $this->db->bind('total', $data['ProductPrice']);
-        $this->db->bind('id', $data['ProductID']);
-        $this->db->bind('userID', $_SESSION['id']);
-        $this->db->execute();
-        return $this->db->rowCount();
-    }
-
     public function insertOrdes($data)
     {
         $query = "INSERT INTO orders (userID, quantity, totalOrder) values(:id, :quantity, :total)";
         $this->db->query($query);
-        $this->db->bind('id', $_POST['id']);
-        $this->db->bind('quantity', $_POST['quantity']);
-        $this->db->bind('total', $_POST['total']);
+        $this->db->bind('id', $data['id']);
+        $this->db->bind('quantity', $data['quantity']);
+        $this->db->bind('total', $data['total']);
         return $this->db->rowCount();
     }
 }
