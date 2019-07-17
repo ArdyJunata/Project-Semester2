@@ -53,12 +53,11 @@ class Cart_model
 
     public function updateCart($data)
     {
-        $query = "UPDATE shopingcart SET quantity = :quantity, TotalPice = :price*:quantity WHERE ProductID = :id and userID = :userID";
+        $query = "UPDATE shopingcart SET quantity = :quantity, TotalPice = :price*:quantity WHERE ProductID = :id ";
         $this->db->query($query);
-        $this->db->bind('quantity', $data['Quantity']);
-        $this->db->bind('id', $data['ProductID']);
-        $this->db->bind('userID', $_SESSION['id']);
-        $this->db->bind('price', $data['ProductPrice']);
+        $this->db->bind('quantity', $data['quantity']);
+        $this->db->bind('id', $data['id']);
+        $this->db->bind('price', $data['price']);
         $this->db->execute();
         return $this->db->rowCount();
     }
