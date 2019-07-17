@@ -1,6 +1,7 @@
 <?php
 
-class Cart_model {
+class Cart_model
+{
     private $table = 'shopingcart';
     private $db;
 
@@ -11,9 +12,23 @@ class Cart_model {
 
     public function setCart($data)
     {
-        $query = "INSERT INTO shopingcart values ('', 1, :total, :id, :userID)";
+        if ($this->cekCart($data) > 0) { 
+            $this->updateCart($data);
+        } else {
+            $query = "INSERT INTO shopingcart values ('', 1, :total, :id, :userID)";
+            $this->db->query($query);
+            $this->db->bind('total', $data['ProductPrice']);
+            $this->db->bind('id', $data['ProductID']);
+            $this->db->bind('userID', $_SESSION['id']);
+            $this->db->execute();
+            return $this->db->rowCount();
+        }
+    }
+
+    public function cekCart($data)
+    {
+        $query = "SELECT * shoopingcart WHERE userID = :userID and ProductID = :id";
         $this->db->query($query);
-        $this->db->bind('total', $data['ProductPrice']);
         $this->db->bind('id', $data['ProductID']);
         $this->db->bind('userID', $_SESSION['id']);
         $this->db->execute();
@@ -38,11 +53,12 @@ class Cart_model {
 
     public function updateCart($data)
     {
-        $query = "UPDATE shopingcart SET quantity = :quantity, TotalPice = :price*:quantity WHERE ProductID = :id ";
+        $query = "UPDATE shopingcart SET quantity = :quantity, TotalPice = :price*:quantity WHERE ProductID = :id and userID = :userID";
         $this->db->query($query);
-        $this->db->bind('quantity', $data['quantity']);
-        $this->db->bind('id', $data['id']);
-        $this->db->bind('price', $data['price']);
+        $this->db->bind('quantity', $data['Quantity']);
+        $this->db->bind('id', $data['ProductID']);
+        $this->db->bind('userID', $_SESSION['id']);
+        $this->db->bind('price', $data['ProductPrice']);
         $this->db->execute();
         return $this->db->rowCount();
     }
@@ -55,5 +71,3 @@ class Cart_model {
         return $this->db->single();
     }
 }
-
-?>

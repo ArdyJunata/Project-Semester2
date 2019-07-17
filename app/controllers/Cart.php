@@ -42,5 +42,3 @@ class Cart extends Controller {
         }
     }
 }
-
-?>

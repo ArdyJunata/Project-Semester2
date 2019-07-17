@@ -1,18 +1,17 @@
 <?php
 
 
-class Category extends Controller {
+class Category extends Controller
+{
     public function index()
     {
-            $data['judul'] = 'Home';
-            $data['category'] = $this->model('Category_model')->getAllCategoriesName();
-            $data['product'] = $this->model('Category_model')->getAllProduct();
-            $this->view('templates/header', $data);
-            $this->view('category/index', $data);
-            $this->view('templates/rated', $data);
-            $this->view('templates/footer');
-            
-        
+        $data['judul'] = 'Home';
+        $data['category'] = $this->model('Category_model')->getAllCategoriesName();
+        $data['product'] = $this->model('Category_model')->getAllProduct();
+        $this->view('templates/header', $data);
+        $this->view('category/index', $data);
+        $this->view('templates/rated', $data);
+        $this->view('templates/footer');
     }
     public function detail($id)
     {
@@ -24,7 +23,4 @@ class Category extends Controller {
         $this->view('templates/rated', $data);
         $this->view('templates/footer');
     }
-
 }
-
-?>
