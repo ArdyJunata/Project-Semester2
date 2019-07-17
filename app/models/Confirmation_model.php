@@ -22,7 +22,12 @@ class Cart_model {
 
     public function insertOrdes($data)
     {
-        
+        $query = "INSERT INTO orders (userID, quantity, totalOrder) values(:id, :quantity, :total)";
+        $this->db->query($query);
+        $this->db->bind('id', $_POST['id']);
+        $this->db->bind('quantity', $_POST['quantity']);
+        $this->db->bind('total', $_POST['total']);
+        return $this->db->rowCount();
     }
 }
 

@@ -83,8 +83,8 @@
 
                                         <form action="<?=  BASEURL; ?>/Confirmation/insertOrder" method="post">
                                             <input type="hidden" name="quantity" id="quantity" value="<?=$data['cart']['Quantity']?>">
-                                            <input type="hidden" name="name" id="name" value="<?=$data['cart']['ProductName']?>">
-                                            <input type="hidden" name="price" id="price" value="<?=$data['cart']['ProductPrice']?>">
+                                            <input type="hidden" name="id" id="id" value="<?=$data['cart']['userID']?>">
+                                            <input type="hidden" name="total" id="total" value="<?= $data['shoppingcart']['total'] ?>">
                                             <button type="submit" class="gray_btn">Proceed to checkout</button>
                                         </form>
 

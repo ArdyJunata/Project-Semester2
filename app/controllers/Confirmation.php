@@ -12,15 +12,15 @@ class Confirmation extends Controller {
         $this->view('templates/footer');
     }
 
-    public function insertOrder($data)
+    public function insertOrder()
     {
-        $data['judul'] = 'Confirmation';
-        $data['cart'] = $this->model('Cart_model')->getCartProduct($id);
-        $data['shoppingcart'] = $this->model('Cart_model')->getShopCart($id);
-        $this->model('Confirmation_model')->insertOrders($id);
-        $this->view('templates/header', $data);
-        $this->view('confirmation/index', $data);
-        $this->view('templates/footer');
+        if( $this->model('Confirmation_model')->insertOrders($_POST) > 0 ) {
+            header('Location: '. BASEURL .'/confirmation/detail/' . $_SESSION['id']);
+            exit;
+        } else {
+            header('Location: '. BASEURL . '/cart/detail/');
+            exit;
+        }
     }
 }
 
