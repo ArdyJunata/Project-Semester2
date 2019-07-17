@@ -34,10 +34,10 @@ class Cart extends Controller {
     public function update()
     {
         if( $this->model('Cart_model')->updateCart($_POST) > 0 ) {
-            header('Location: '. BASEURL . '/cart/detail/1');
+            header('Location: '. BASEURL . '/cart/detail/' . $_SESSION['id']);
             exit;
         } else {
-            header('Location: '. BASEURL . '/cart/detail/1');
+            echo "Something wrong";
             exit;
         }
     }
