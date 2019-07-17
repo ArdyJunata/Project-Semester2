@@ -9,13 +9,13 @@ class Confirmation_model {
         $this->db = new Database;
     }
 
-    public function insertOrdes($data)
+    public function insertOrder($data)
     {
-        $query = "INSERT INTO orders (userID, quantity, totalOrder) values(:id, :quantity, :total)";
+        $query = "INSERT INTO orders (userID, totalOrder) values(:id, :total)";
         $this->db->query($query);
-        $this->db->bind('id', $data['id']);
-        $this->db->bind('quantity', $data['quantity']);
+        $this->db->bind('id', $_SESSION['id']);
         $this->db->bind('total', $data['total']);
+        $this->db->execute();
         return $this->db->rowCount();
     }
 }
