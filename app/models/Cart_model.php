@@ -13,7 +13,7 @@ class Cart_model
     public function setCart($data)
     {
         if ($this->cekCart($data) > 0) { 
-            $this->updateCart($data);
+            return 1;
         } else {
             $query = "INSERT INTO shopingcart values ('', 1, :total, :id, :userID)";
             $this->db->query($query);
@@ -27,7 +27,7 @@ class Cart_model
 
     public function cekCart($data)
     {
-        $query = "SELECT * shoopingcart WHERE userID = :userID and ProductID = :id";
+        $query = "SELECT * from shopingcart WHERE userID = :userID and ProductID = :id";
         $this->db->query($query);
         $this->db->bind('id', $data['ProductID']);
         $this->db->bind('userID', $_SESSION['id']);
