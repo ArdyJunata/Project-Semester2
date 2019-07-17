@@ -60,7 +60,7 @@
                             <?php endforeach; ?>
                             <tr class="bottom_button">
                                 <td>
-                                    <button type="submit" class="gray_btn">Update Cart</p>
+                                    <button type="submit" class="gray_btn">Update Cart</button>
                                 </form>
                                     
                                 </td>
@@ -80,7 +80,15 @@
                                 <td>
                                     <div class="checkout_btn_inner d-flex align-items-center">
                                         <a class="gray_btn" href="<?=  BASEURL; ?>">Continue Shopping</a>
-                                        <a class="primary-btn" href="<?=  BASEURL; ?>/Confirmation">Proceed to checkout</a>
+
+                                        <form action="<?=  BASEURL; ?>/Confirmation/insertOrder" method="post">
+                                            <input type="hidden" name="quantity" id="quantity" value="<?=$data['cart']['Quantity']?>">
+                                            <input type="hidden" name="name" id="name" value="<?=$data['cart']['ProductName']?>">
+                                            <input type="hidden" name="price" id="price" value="<?=$data['cart']['ProductPrice']?>">
+                                            <button type="submit" class="gray_btn">Proceed to checkout</button>
+                                        </form>
+
+                                        
                                     </div>
                                 </td>
                             </tr>
