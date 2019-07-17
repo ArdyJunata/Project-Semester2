@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 14 Jul 2019 pada 19.16
+-- Waktu pembuatan: 17 Jul 2019 pada 17.07
 -- Versi server: 10.1.38-MariaDB
 -- Versi PHP: 7.3.3
 
@@ -91,8 +91,9 @@ CREATE TABLE `orderdetails` (
 
 CREATE TABLE `orders` (
   `OrderID` int(11) NOT NULL,
-  `OrderUserID` int(11) NOT NULL,
-  `OrderAmount` float NOT NULL,
+  `userID` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `totalOrder` int(11) NOT NULL,
   `OrderShipName` varchar(100) COLLATE latin1_german2_ci NOT NULL,
   `OrderShipAddress` varchar(100) COLLATE latin1_german2_ci NOT NULL,
   `OrderShipAddress2` varchar(100) COLLATE latin1_german2_ci NOT NULL,
@@ -109,6 +110,21 @@ CREATE TABLE `orders` (
   `OrderShipped` tinyint(1) NOT NULL DEFAULT '0',
   `OrderTrackingNumber` varchar(80) COLLATE latin1_german2_ci DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_german2_ci;
+
+--
+-- Dumping data untuk tabel `orders`
+--
+
+INSERT INTO `orders` (`OrderID`, `userID`, `quantity`, `totalOrder`, `OrderShipName`, `OrderShipAddress`, `OrderShipAddress2`, `OrderCity`, `OrderState`, `OrderZip`, `OrderCountry`, `OrderPhone`, `OrderFax`, `OrderShipping`, `OrderTax`, `OrderEmail`, `OrderDate`, `OrderShipped`, `OrderTrackingNumber`) VALUES
+(1, 1, 0, 4000000, '', '', '', '', '', '', '', '', '', 0, 0, '', '2019-07-17 04:50:05', 0, NULL),
+(2, 1, 0, 40000000, '', '', '', '', '', '', '', '', '', 0, 0, '', '2019-07-17 04:52:44', 0, NULL),
+(3, 1, 0, 40000000, '', '', '', '', '', '', '', '', '', 0, 0, '', '2019-07-17 04:53:45', 0, NULL),
+(4, 3, 0, 4000000, '', '', '', '', '', '', '', '', '', 0, 0, '', '2019-07-17 04:58:39', 0, NULL),
+(5, 3, 0, 4000000, '', '', '', '', '', '', '', '', '', 0, 0, '', '2019-07-17 05:00:28', 0, NULL),
+(6, 1, 0, 52000000, '', '', '', '', '', '', '', '', '', 0, 0, '', '2019-07-17 05:01:32', 0, NULL),
+(7, 1, 0, 115200000, '', '', '', '', '', '', '', '', '', 0, 0, '', '2019-07-17 05:47:24', 0, NULL),
+(8, 1, 0, 16000000, '', '', '', '', '', '', '', '', '', 0, 0, '', '2019-07-17 05:56:31', 0, NULL),
+(9, 1, 0, 12000000, '', '', '', '', '', '', '', '', '', 0, 0, '', '2019-07-17 13:20:21', 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -213,30 +229,9 @@ CREATE TABLE `shopingcart` (
 --
 
 INSERT INTO `shopingcart` (`CartID`, `Quantity`, `TotalPice`, `ProductID`, `userID`) VALUES
-(1, 7, 14000000, 1, 1),
-(5, 7, 14000000, 1, 2),
-(7, 1, 2000000, 3, 2),
-(8, 7, 14000000, 1, 2),
-(9, 7, 14000000, 1, 2),
-(10, 1, 1000000, 2, 2),
-(11, 7, 14000000, 1, 2),
-(12, 7, 14000000, 1, 2),
-(13, 7, 14000000, 1, 2),
-(14, 7, 14000000, 1, 2),
-(15, 7, 14000000, 1, 2),
-(16, 1, 2000000, 1, 2),
-(17, 1, 1000000, 2, 2),
-(18, 1, 2000000, 1, 2),
-(19, 1, 2000000, 1, 2),
-(20, 1, 1000000, 2, 2),
-(21, 1, 1000000, 2, 2),
-(22, 1, 2000000, 1, 2),
-(23, 1, 2000000, 1, 1),
-(24, 1, 1000000, 2, 1),
-(25, 1, 3000000, 3, 1),
-(26, 1, 1000000, 2, 2),
-(27, 1, 3000000, 3, 1),
-(28, 1, 1000000, 2, 1);
+(43, 3, 6000000, 1, 1),
+(44, 2, 6000000, 3, 1),
+(45, 0, 0, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -270,7 +265,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`UserID`, `UserEmail`, `UserPassword`, `UserFirstName`, `UserLastName`, `UserCity`, `UserState`, `UserZip`, `UserEmailVerified`, `UserRegistrationDate`, `UserVerificationCode`, `UserIP`, `UserPhone`, `UserFax`, `UserCountry`, `UserAddress`, `UserAddress2`) VALUES
 (1, 'ardy', '1', NULL, NULL, NULL, NULL, NULL, 0, '2019-07-14 06:31:53', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 'tyo', '1', NULL, NULL, NULL, NULL, NULL, 0, '2019-07-14 11:51:21', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(2, 'tyo', '1', NULL, NULL, NULL, NULL, NULL, 0, '2019-07-14 11:51:21', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, 'jody', '123', NULL, NULL, NULL, NULL, NULL, 0, '2019-07-17 04:57:18', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -357,7 +353,7 @@ ALTER TABLE `orderdetails`
 -- AUTO_INCREMENT untuk tabel `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `OrderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `productcategories`
@@ -381,13 +377,13 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT untuk tabel `shopingcart`
 --
 ALTER TABLE `shopingcart`
-  MODIFY `CartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `CartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
