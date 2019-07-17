@@ -47,19 +47,19 @@
                                 <td>
                                     <!-- <h5><?= $cart['Quantity'] ?></h5> -->
                                     <div class="product_count">
-                                        <form action="<?= BASEURL; ?>/cart/update" method="post">
-                                            <input type="number" name="Quantity" id="Quantity" placeholder="<?= $cart['Quantity'] ?>">
-                                            <input type="hidden" name="ProductID" ProductID="id" value="<?= $cart['ProductID'] ?>">
-                                            <input type="hidden" name="ProductPrice" id="ProductPrice" value="<?= $cart['ProductPrice'] ?>">
+                                    <form action="<?= BASEURL; ?>/cart/update" method="post">
+                                        <input type="number" name="quantity" id="quantity" placeholder="<?=$cart['Quantity']?>">
+                                        <input type="hidden" name="id" id="id" value="<?=$cart['ProductID']?>">
+                                        <input type="hidden" name="price" id="price" value="<?=$cart['ProductPrice']?>">
                                 </td>
                                 <td>
-                                    <h5><?= $cart['TotalPice'] ?></h5>
+                                    <h5><?=$cart['TotalPice']?></h5>
                                 </td>
                             </tr>
-                        <?php endforeach; ?>
-                        <tr class="bottom_button">
-                            <td>
-                                <button type="submit" class="gray_btn">Update Cart</button>
+                            <?php endforeach; ?>
+                            <tr class="bottom_button">
+                                <td>
+                                    <button type="submit" class="gray_btn">Update Cart</button>
                                 </form>
 
                             </td>
