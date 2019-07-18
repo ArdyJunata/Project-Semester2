@@ -1,3 +1,3 @@
 <?php
 
-header('Location:http://localhost/OnlineShopActionFigure/public/login');
+header('https://actionshop.000webhostapp.com/login');
