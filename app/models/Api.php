@@ -33,7 +33,6 @@ class Api
                 $_SESSION['access_profile'] = $plus->people->get('me');
             } catch (\Exception $e) {
                 echo $e->__toString();
-
                 $_SESSION['access_token'] = '';
                 die;
             }

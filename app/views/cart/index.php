@@ -26,6 +26,7 @@
                             <th scope="col">Price</th>
                             <th scope="col">Quantity</th>
                             <th scope="col">Total</th>
+                            <th scope="col">Opsi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -47,19 +48,22 @@
                                 <td>
                                     <!-- <h5><?= $cart['Quantity'] ?></h5> -->
                                     <div class="product_count">
-                                    <form action="<?= BASEURL; ?>/cart/update" method="post">
-                                        <input type="number" name="quantity" id="quantity" placeholder="<?=$cart['Quantity']?>">
-                                        <input type="hidden" name="id" id="id" value="<?=$cart['ProductID']?>">
-                                        <input type="hidden" name="price" id="price" value="<?=$cart['ProductPrice']?>">
+                                        <form action="<?= BASEURL; ?>/cart/update" method="post">
+                                            <input type="number" name="quantity" id="quantity" placeholder="<?= $cart['Quantity'] ?>">
+                                            <input type="hidden" name="id" id="id" value="<?= $cart['ProductID'] ?>">
+                                            <input type="hidden" name="price" id="price" value="<?= $cart['ProductPrice'] ?>">
                                 </td>
                                 <td>
-                                    <h5><?=$cart['TotalPice']?></h5>
+                                    <h5><?= $cart['TotalPice'] ?></h5>
+                                </td>
+                                <td>
+                                    <a href="<?= BASEURL;?>/cart/delete/<?=$data['id']['CartID']?>">Delete</a>
                                 </td>
                             </tr>
-                            <?php endforeach; ?>
-                            <tr class="bottom_button">
-                                <td>
-                                    <button type="submit" class="gray_btn">Update Cart</button>
+                        <?php endforeach; ?>
+                        <tr class="bottom_button">
+                            <td>
+                                <button type="submit" class="gray_btn">Update Cart</button>
                                 </form>
 
                             </td>

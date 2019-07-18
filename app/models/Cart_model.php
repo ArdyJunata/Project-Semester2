@@ -51,6 +51,14 @@ class Cart_model
         return $this->db->resultSet();
     }
 
+    public function getCartByID()
+    {
+        $query = "SELECT CartID FROM shopingcart WHERE userID = :id";
+        $this->db->query($query);
+        $this->db->bind('id', $_SESSION['id']);
+        return $this->db->single();
+    }
+
     public function updateCart($data)
     {
         $query = "UPDATE shopingcart SET quantity = :quantity, TotalPice = :price*:quantity WHERE ProductID = :id ";
@@ -68,5 +76,14 @@ class Cart_model
         $this->db->query($query);
         $this->db->bind('id', $id);
         return $this->db->single();
+    }
+
+    public function deleteCart($id)
+    {
+        $query = "DELETE FROM shopingcart WHERE CartID = :id";
+        $this->db->query($query);
+        $this->db->bind('id', $id);
+        $this->db->execute();
+        return $this->db->rowCount();
     }
 }

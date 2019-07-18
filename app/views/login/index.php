@@ -9,7 +9,7 @@
 						<div class="hover">
 							<h4>Dont have an account ?</h4>
 							<p>You can register your account by click button below</p>
-							<a class="primary-btn" href="registration.html">Create an Account</a>
+							<a class="primary-btn" href="<?= BASEURL; ?>/register">Create an Account</a>
 						</div>
 					</div>
 				</div>
