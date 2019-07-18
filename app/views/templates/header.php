@@ -81,7 +81,7 @@
 							</li> -->
 							<li class="nav-item"><a class="nav-link" href="<?= BASEURL; ?>/contact">Contact</a></li>
 							<li class="nav-item"><a class="nav-link" href="#"><?= $_SESSION['user']?></a></li>
-							<li class="nav-item"><a class="nav-link text-danger" href="<?= BASEURL; ?>/login/logout">logout</a></li>
+							<li class="nav-item"><a class="nav-link text-warning" href="<?= BASEURL; ?>/login/logout">logout</a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 							<li class="nav-item"><a href="<?= BASEURL; ?>/cart/detail/<?= $_SESSION['id'] ?>" class="cart"><span class="ti-bag"></span></a></li>

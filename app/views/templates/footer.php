@@ -57,7 +57,6 @@
 							<li><img src="http://localhost/project-1/public/img/i6.jpg" alt=""></li>
 							<li><img src="http://localhost/project-1/public/img/i7.jpg" alt=""></li>
 							<li><img src="http://localhost/project-1/public/img/i8.jpg" alt=""></li>
-							<?php var_dump(BASEURL) ?>
 						</ul>
 					</div>
 				</div>
