@@ -18,7 +18,7 @@
 	<div class="row">
 		<div class="col-xl-3 col-lg-4 col-md-5">
 			<div class="sidebar-categories">
-				<div class="head"><?= $_SESSION['user'] ?></div>
+				<div class="head">Browse Category</div>
 				<ul class="main-categories">
 					<?php foreach ($data['category'] as $category) : ?>
 						<!-- <li class="main-nav-list"><a data-toggle="collapse" href="<?= BASEURL; ?>/category/detail/<?= $category['CategoryID'] ?>" aria-expanded="false" aria-controls="fruitsVegetable"><?= $category['CategoryName'] ?></a> -->
